@@ -66,7 +66,8 @@
           <Separator/>
           <Button Name="bImagePrev" Margin="1" Command="{Binding PrevImageCommand}">Prev</Button>
           <Button Name="bImageNext" Margin="1" Command="{Binding NextImageCommand}">Next</Button>
-        </StackPanel>
+          <Button Name="logCtnrl" Margin="1" Command="{Binding ViewLogCommand}" >Log</Button>
+         </StackPanel>
       </ToolTip>
     </StackPanel>
     <!-- Grid 1 -->

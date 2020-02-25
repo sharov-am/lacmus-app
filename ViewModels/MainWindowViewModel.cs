@@ -114,7 +114,10 @@ namespace RescuerLaApp.ViewModels
             HelpCommand = ReactiveCommand.Create(Help);
             AboutCommand = ReactiveCommand.Create(About);
             ExitCommand = ReactiveCommand.Create(Exit);
+            ViewLogCommand = ReactiveCommand.Create(ViewLog);
         }
+
+      
 
         private IObservable<bool> CanSetup()
         {
@@ -157,6 +160,7 @@ namespace RescuerLaApp.ViewModels
         public ReactiveCommand<Unit, Unit> HelpCommand { get; set; }
         public ReactiveCommand<Unit, Unit> AboutCommand { get; set; }
         public ReactiveCommand<Unit, Unit> ExitCommand { get; set; }
+        public ReactiveCommand<Unit, Unit> ViewLogCommand{get;set;}
 
         #endregion
 
@@ -534,6 +538,30 @@ namespace RescuerLaApp.ViewModels
                     OpenUrl("https://github.com/lizaalert/lacmus");
                     break;
             }
+        }
+
+
+        public async void Vi()
+        {
+            var window = MessageBoxManager.GetMessageBoxStandardWindow(new MessageBoxStandardParams
+            {
+                ContentTitle = "Exit",
+                ContentMessage = "Do you really want to exit?",
+                Icon = Icon.Info,
+                Style = Style.None,
+                ShowInCenter = true,
+                ButtonDefinitions = ButtonEnum.YesNo
+            });
+            var result = await window.Show();
+            if (result == ButtonResult.Yes)
+                _window.Close();
+        }
+
+
+        private void ViewLog()
+        {
+            var lv = new LogViewerWindow();
+            lv.Show();
         }
 
         public async void Exit()

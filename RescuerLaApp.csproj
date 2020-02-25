@@ -13,6 +13,9 @@
     <EmbeddedResource Include="Assets\*" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Views\LogViewerWindow.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.9.0-preview6" />
     <PackageReference Include="Avalonia.Angle.Natives" Version="2.0.0" />
     <PackageReference Include="Avalonia.Controls.PanAndZoom" Version="2.3.0-preview1" />
@@ -27,5 +30,15 @@
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="3.0.0" />
     <PackageReference Include="NewtonSoft.Json" Version="12.0.2" />
     <PackageReference Include="ReactiveUI.Fody" Version="11.1.21" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\LogViewerWindow.xaml.cs">
+      <DependentUpon>LogViewerWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\LogViewerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
